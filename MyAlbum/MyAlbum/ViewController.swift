@@ -22,6 +22,13 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-
+    @IBAction func 도전과제(_ sender: Any) {
+        let alert = UIAlertController(title: "도전과제", message: "도전과제", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
