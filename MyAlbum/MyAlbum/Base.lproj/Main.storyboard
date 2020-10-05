@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3q-CG-W1W">
-                                <rect key="frame" x="144" y="567" width="87" height="42"/>
+                                <rect key="frame" x="154" y="567" width="67" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <state key="normal" title="도전과제">
+                                <state key="normal" title="Reset">
                                     <color key="titleColor" systemColor="systemPinkColor"/>
                                 </state>
                                 <connections>
