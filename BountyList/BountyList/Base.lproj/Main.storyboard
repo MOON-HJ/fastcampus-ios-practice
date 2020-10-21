@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="23" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="191" id="gK4-TF-LAD" customClass="ListCell" customModule="BountyList" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="191" id="gK4-TF-LAD" customClass="ListCell" customModule="BountyList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="191"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gK4-TF-LAD" id="cbW-vO-z6m">
@@ -82,6 +82,9 @@
                             <constraint firstItem="pQN-5L-RH7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gCN-Od-Y3Y"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="3ZT-05-NjL" kind="presentation" identifier="showDetail" id="iWZ-yM-LZs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,11 +95,11 @@
             <objects>
                 <viewController id="3ZT-05-NjL" customClass="DetailViewController" customModule="BountyList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ci-ij-j1f">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xl-jl-pTI">
-                                <rect key="frame" x="354" y="54" width="50" height="50"/>
+                                <rect key="frame" x="354" y="10" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0xl-jl-pTI" secondAttribute="height" multiplier="1:1" id="83Z-V6-lqc"/>
                                     <constraint firstAttribute="width" constant="50" id="mzP-86-qCD"/>
@@ -117,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEn-tW-n7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="778.26086956521749" y="74.330357142857139"/>
+            <point key="canvasLocation" x="913" y="75"/>
         </scene>
     </scenes>
     <resources>
