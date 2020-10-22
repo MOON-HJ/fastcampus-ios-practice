@@ -9,16 +9,23 @@ import UIKit
 
 class BountyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let nameList = ["brook", "chopper", "franky", "luffy", "nami", "robin", "sanji", "zoro"]
-    let bountyList = [3300000, 50, 4400000, 30000000, 1600000, 8000000, 7700000, 12000000]
-    
+    let bountyInfoList:[BountyInfo] = [
+        BountyInfo(name:"brook", bounty:3300000),
+        BountyInfo(name:"chopper", bounty:50),
+        BountyInfo(name:"franky", bounty:4400000),
+        BountyInfo(name:"luffy", bounty:30000000),
+        BountyInfo(name:"nami", bounty:1600000),
+        BountyInfo(name:"robin", bounty:8000000),
+        BountyInfo(name:"sanji", bounty:7700000),
+        BountyInfo(name:"zoro", bounty:12000000)
+]
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let vc = segue.destination as? DetailViewController
             
             if let index = sender as? Int {
-                vc?.name = nameList[index]
-                vc?.bounty = bountyList[index]
+                vc?.bountyInfo = bountyInfoList[index]
             }
         }
     }
@@ -37,11 +44,11 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else {
             return UITableViewCell()
         }
+        let bountyInfo:BountyInfo = bountyInfoList[indexPath.row]
         
-        let img = UIImage(named: "\(nameList[indexPath.row]).jpg")
-        cell.imgView.image = img
-        cell.nameLabel.text = nameList[indexPath.row]
-        cell.bountyLabel.text = "\(bountyList[indexPath.row])"
+        cell.imgView.image = bountyInfo.image
+        cell.nameLabel.text = bountyInfo.name
+        cell.bountyLabel.text = "\(bountyInfo.bounty)"
         
         return cell
     }
@@ -52,16 +59,6 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
         performSegue(withIdentifier: "showDetail", sender: indexPath.row)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 class ListCell: UITableViewCell {
@@ -69,3 +66,18 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var nameLabel:UILabel!
     @IBOutlet weak var bountyLabel: UILabel!
 }
+
+
+struct BountyInfo {
+    let name: String
+    let bounty: Int
+    var image: UIImage? {
+        return UIImage(named: "\(name).jpg")
+    }
+    
+    init(name: String, bounty: Int) {
+        self.name = name
+        self.bounty = bounty
+    }
+}
+
