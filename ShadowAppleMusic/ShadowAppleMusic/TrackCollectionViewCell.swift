@@ -15,8 +15,16 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        trackThumbnail.layer.cornerRadius = 4
+        trackThumbnail.layer.cornerRadius = 8
         trackArtist.textColor = UIColor.systemGray2
+    }
+    
+    func updateUI(item: Track?){
+        guard let track = item else { return }
+        
+        self.trackThumbnail.image = track.artwork
+        self.trackTitle.text = track.title
+        self.trackArtist.text = track.artist
     }
     
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    let trackManager: TrackManager = TrackManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,7 +22,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return trackManager.tracks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -28,6 +30,8 @@ extension HomeViewController: UICollectionViewDataSource{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? TrackCollectionViewCell else {
             return UICollectionViewCell()
         }
+        let track = trackManager.track(at: indexPath.item)
+        cell.updateUI(item: track)
         return cell
     }
     
@@ -53,7 +57,7 @@ extension HomeViewController: UICollectionViewDelegate {
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSpacing:CGFloat = 20
-        let margin:CGFloat = 20
+        let margin:CGFloat = 40
         let width:CGFloat = (view.bounds.width - itemSpacing - margin)/2
         let height = width + 60
         
