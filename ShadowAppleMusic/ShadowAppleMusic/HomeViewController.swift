@@ -38,7 +38,22 @@ extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            return UICollectionReusableView()
+            guard let item = trackManager.todayTrack else {
+                return UICollectionReusableView()
+            }
+
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? TrackCollectionHeaderView else {
+                return UICollectionReusableView()
+            }
+            
+            dump(kind)
+            header.update(with: item)
+            header.tapHandler = {item -> Void in
+                // 플레이어를 띄운다
+                dump(item)
+            }
+            
+            return header
         default:
             return UICollectionReusableView()
         }
