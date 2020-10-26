@@ -20,6 +20,8 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var totalDurationLabel: UILabel!
     
+    let simplePlayer = SimplePlayer.shared
+    
     var timeObserver: Any?
     var isSeeking: Bool = false
     
