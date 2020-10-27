@@ -37,6 +37,10 @@
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ByA-gc-E1H">
                                 <rect key="frame" x="33" y="533" width="348" height="31"/>
+                                <connections>
+                                    <action selector="beginDrag:" destination="RR9-Qm-4Nv" eventType="editingDidBegin" id="Mff-nY-4t6"/>
+                                    <action selector="endDrag:" destination="RR9-Qm-4Nv" eventType="editingDidEnd" id="liQ-HI-voy"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeZ-qu-hju">
                                 <rect key="frame" x="35" y="568" width="40.5" height="18"/>
@@ -59,6 +63,9 @@
                                 <state key="normal" image="play.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40" scale="large"/>
                                 </state>
+                                <connections>
+                                    <action selector="togglePlayButton:" destination="RR9-Qm-4Nv" eventType="touchUpInside" id="2vU-dm-uFk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xn3-9P-Fq9"/>

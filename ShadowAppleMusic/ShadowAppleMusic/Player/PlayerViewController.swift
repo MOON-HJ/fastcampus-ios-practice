@@ -44,14 +44,47 @@ class PlayerViewController: UIViewController {
     }
     
     func updateTrackInfo(){
-        
+        guard let track = simplePlayer.currentItem?.convertToTrack() else {return}
+        thumnailImageView.image = track.artwork
+        titleLabel.text = track.title
+        artistLabel.text = track.artist
     }
     
+    
     func updatePlayButton(){
-        
+        let configuration = UIImage.SymbolConfiguration(pointSize: 40)
+
+        if simplePlayer.isPlaying {
+            let image = UIImage(systemName: "pause.fill", withConfiguration: configuration)
+            playerControlButton.setImage(image, for: .normal)
+            
+        } else {
+            let image = UIImage(systemName: "play.fill", withConfiguration: configuration)
+            playerControlButton.setImage(image, for: .normal)
+
+        }
     }
     
     func updateTime(time: CMTime){
         
     }
+
+    @IBAction func togglePlayButton(_ sender: UIButton){
+        if simplePlayer.isPlaying {
+            simplePlayer.pause()
+        } else {
+            simplePlayer.play()
+        }
+        updatePlayButton()
+    }
+    
+    @IBAction func beginDrag(_ sender: UISlider) {
+        isSeeking = true
+    }
+    
+    
+    @IBAction func endDrag(_ sender: UISlider) {
+        isSeeking = false
+    }
+
 }
