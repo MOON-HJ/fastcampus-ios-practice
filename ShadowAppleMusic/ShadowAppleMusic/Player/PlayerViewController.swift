@@ -29,6 +29,9 @@ class PlayerViewController: UIViewController {
         super.viewDidLoad()
         updatePlayButton()
         updateTime(time: CMTime.zero)
+        timeObserver = simplePlayer.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 10), queue: DispatchQueue.main, using: {time in
+            self.updateTime(time: time)
+        } )
 
         // Do any additional setup after loading the view.
     }
@@ -39,7 +42,15 @@ class PlayerViewController: UIViewController {
         updateTrackInfo()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        simplePlayer.pause()
+        simplePlayer.replaceCurrentItem(with: nil)
+    }
+    
     func updateTintColor(){
+        playerControlButton.tintColor = DefaultStyle.Colors.tint
+        timeSlider.tintColor = DefaultStyle.Colors.tint
         
     }
     
@@ -66,7 +77,12 @@ class PlayerViewController: UIViewController {
     }
     
     func updateTime(time: CMTime){
+        currentTimeLabel.text = secondsToString(sec: simplePlayer.currentTime )
+        totalDurationLabel.text = secondsToString(sec: simplePlayer.totalDurationTime)
         
+        if isSeeking == false {
+            timeSlider.value = Float(simplePlayer.currentTime/simplePlayer.totalDurationTime)
+        }
     }
 
     @IBAction func togglePlayButton(_ sender: UIButton){
@@ -86,5 +102,21 @@ class PlayerViewController: UIViewController {
     @IBAction func endDrag(_ sender: UISlider) {
         isSeeking = false
     }
+    
+    @IBAction func seek(_ sender: UISlider) {
+        guard let currentItem = simplePlayer.currentItem else { return }
+        let position = Double(sender.value)
+        let seconds = position * currentItem.duration.seconds
+        let time = CMTime(seconds: seconds, preferredTimescale: 100)
+        simplePlayer.seek(to: time)
+    }
+
+    func secondsToString(sec: Double) -> String {
+           guard sec.isNaN == false else { return "00:00" }
+           let totalSeconds = Int(sec)
+           let min = totalSeconds / 60
+           let seconds = totalSeconds % 60
+           return String(format: "%02d:%02d", min, seconds)
+       }
 
 }
