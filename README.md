@@ -1,6 +1,12 @@
 # fastcampus-ios-practice
 fastCampus, iOS 앱 개발 올인원 패키지 Online 강의 공부
 
+## ShadowAppleMusic App
+![](ShadowAppleMusic/shadowAppleMusic.gif)
+- AVFoundation 활용 Player 구현
+- CollectionView, CollectionViewHeader 사용
+- Background Image Blur 효과
+
 ## BountyList App
 ![](BountyList/bounty.gif)
 - UIView Animation 사용
