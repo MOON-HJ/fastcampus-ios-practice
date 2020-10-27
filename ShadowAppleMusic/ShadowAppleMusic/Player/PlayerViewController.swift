@@ -14,6 +14,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var thumnailImageView: UIImageView!
     @IBOutlet weak var titleLabel : UILabel!
     @IBOutlet weak var artistLabel : UILabel!
+    @IBOutlet weak var thumnailBlurBackImage: UIImageView!
     
     @IBOutlet weak var playerControlButton: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
@@ -59,6 +60,14 @@ class PlayerViewController: UIViewController {
         thumnailImageView.image = track.artwork
         titleLabel.text = track.title
         artistLabel.text = track.artist
+        
+        thumnailBlurBackImage.image = track.artwork
+        let darkBlur = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: darkBlur)
+        blurView.frame = thumnailBlurBackImage.bounds
+        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        thumnailBlurBackImage.addSubview(blurView)
+
     }
     
     
