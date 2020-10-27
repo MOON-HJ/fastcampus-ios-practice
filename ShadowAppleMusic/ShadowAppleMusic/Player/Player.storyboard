@@ -11,7 +11,7 @@
         <!--Player View Controller-->
         <scene sceneID="ACA-Pb-pe9">
             <objects>
-                <viewController id="RR9-Qm-4Nv" customClass="PlayerViewController" customModule="ShadowAppleMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerViewController" id="RR9-Qm-4Nv" customClass="PlayerViewController" customModule="ShadowAppleMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9oy-vI-YFv" customClass="Play">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,27 +36,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ByA-gc-E1H">
-                                <rect key="frame" x="33" y="583" width="348" height="31"/>
+                                <rect key="frame" x="33" y="533" width="348" height="31"/>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeZ-qu-hju">
-                                <rect key="frame" x="35" y="618" width="40.5" height="18"/>
+                                <rect key="frame" x="35" y="568" width="40.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <color key="highlightedColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CG5-eU-mvn">
-                                <rect key="frame" x="338.5" y="618" width="40.5" height="18"/>
+                                <rect key="frame" x="338.5" y="568" width="40.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <color key="highlightedColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qM3-DT-JCt">
-                                <rect key="frame" x="182" y="665" width="50" height="50"/>
+                                <rect key="frame" x="182" y="615" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qM3-DT-JCt" secondAttribute="height" multiplier="1:1" id="HRi-VG-RuR"/>
                                     <constraint firstAttribute="width" constant="50" id="Ljx-FY-jPQ"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="play.fill" catalog="system">
+                                <state key="normal" image="play.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40" scale="large"/>
                                 </state>
                             </button>
@@ -66,7 +66,7 @@
                         <constraints>
                             <constraint firstItem="qM3-DT-JCt" firstAttribute="centerX" secondItem="xn3-9P-Fq9" secondAttribute="centerX" id="0nt-lH-LeZ"/>
                             <constraint firstItem="CG5-eU-mvn" firstAttribute="top" secondItem="ByA-gc-E1H" secondAttribute="bottom" constant="5" id="6tD-0c-ZBQ"/>
-                            <constraint firstItem="ByA-gc-E1H" firstAttribute="top" secondItem="kAN-wl-kzn" secondAttribute="bottom" constant="100" id="7XL-ti-JBt"/>
+                            <constraint firstItem="ByA-gc-E1H" firstAttribute="top" secondItem="kAN-wl-kzn" secondAttribute="bottom" constant="50" id="7XL-ti-JBt"/>
                             <constraint firstItem="xn3-9P-Fq9" firstAttribute="trailing" secondItem="ByA-gc-E1H" secondAttribute="trailing" constant="35" id="ADQ-3x-x13"/>
                             <constraint firstItem="ByA-gc-E1H" firstAttribute="leading" secondItem="xn3-9P-Fq9" secondAttribute="leading" constant="35" id="CqW-Kd-c2Y"/>
                             <constraint firstItem="DBV-EH-hrU" firstAttribute="top" secondItem="Od9-mO-ETa" secondAttribute="bottom" constant="48" id="EPZ-pR-Xfl"/>
