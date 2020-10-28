@@ -84,10 +84,7 @@ class TodoListCell: UICollectionViewCell {
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var descriptionLabel : UILabel!
     @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var strikeThroughView: UIView!
-    
-    @IBOutlet weak var strikeThroughWidth: NSLayoutConstraint!
-    
+        
     var doneButtonTapHandler: ((Bool) -> Void)?
     var deleteButtonTapHandler: (() -> Void)?
     
@@ -105,8 +102,8 @@ class TodoListCell: UICollectionViewCell {
         
     }
     
-    private func showStrikeThrough(_ show: Bool){
-        
+    private func check(_ show: Bool){
+        descriptionLabel.alpha = show ? 0.0 : 0.5
     }
     
     private func reset(){
@@ -124,8 +121,38 @@ class TodoListHeader:UICollectionReusableView {
     }
 
 }
-struct Todo {
-    let description: String
-    var bool: Bool
+struct Todo : Equatable{
+    let id: Int
+    var isDone: Bool
+    var detail: String
+    var isToday: Bool
+    
+    mutating func update(isDone: Bool, detail: String, isToday: Bool){
+        self.isDone = isDone
+        self.detail = detail
+        self.isToday = isToday
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
+class TodoManager{
+    static let shared = TodoManager()
+    
+    static var lastId:Int = 0
+    
+    var todos:[Todo] = []
+    
+    func createTodo(detail: String, isToday: Bool) -> Todo {
+        return Todo(id: 1, isDone: false, detail: "2", isToday: true)
+        
+    }
+    
+    func addTodo(_ todo: Todo) {
+        
+    }
+    
 }
 
