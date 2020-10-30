@@ -121,38 +121,3 @@ class TodoListHeader:UICollectionReusableView {
     }
 
 }
-struct Todo : Equatable{
-    let id: Int
-    var isDone: Bool
-    var detail: String
-    var isToday: Bool
-    
-    mutating func update(isDone: Bool, detail: String, isToday: Bool){
-        self.isDone = isDone
-        self.detail = detail
-        self.isToday = isToday
-    }
-    
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
-class TodoManager{
-    static let shared = TodoManager()
-    
-    static var lastId:Int = 0
-    
-    var todos:[Todo] = []
-    
-    func createTodo(detail: String, isToday: Bool) -> Todo {
-        return Todo(id: 1, isDone: false, detail: "2", isToday: true)
-        
-    }
-    
-    func addTodo(_ todo: Todo) {
-        
-    }
-    
-}
-
