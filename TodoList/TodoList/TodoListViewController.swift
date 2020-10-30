@@ -9,6 +9,7 @@ import UIKit
 
 class TodoListViewController: UIViewController {
 
+    let viewModel = TodoViewModel()
 //    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var inputViewBottom: NSLayoutConstraint!
     @IBOutlet weak var inputTextField: UITextField!
@@ -19,7 +20,7 @@ class TodoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel.loadTasks()
         // Do any additional setup after loading the view.
     }
     
@@ -43,17 +44,34 @@ extension TodoListViewController {
 
 extension TodoListViewController: UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return viewModel.numOfSection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        switch section {
+        case 0:
+            return viewModel.todayTodos.count
+
+        default:
+            return viewModel.upcommingTodos.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "todoCell", for: indexPath) as? TodoListCell else {
             return UICollectionViewCell()
         }
+        var todo:Todo
+        
+        switch indexPath.section {
+        case 0:
+            todo = viewModel.todayTodos[indexPath.item]
+
+        default:
+            todo = viewModel.upcommingTodos[indexPath.item]
+        }
+
+        cell.updateUI(todo: todo)
         return cell
     }
     
