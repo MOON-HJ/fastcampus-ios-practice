@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Todo : Equatable{
+struct Todo : Equatable, Codable{
     let id: Int
     var isDone: Bool
     var detail: String
@@ -63,7 +63,7 @@ class TodoManager {
     }
     
     func saveTodo(){
-        
+//        Storage.store(todos, to: .documents, as: "todos.json")
         
     }
  }
