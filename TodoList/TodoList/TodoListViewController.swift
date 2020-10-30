@@ -117,15 +117,33 @@ class TodoListCell: UICollectionViewCell {
     }
     
     func updateUI(todo: Todo){
-        
+        checkButton.isSelected = todo.isDone
+        descriptionLabel.text = todo.detail
+        deleteButton.isHidden = todo.isDone == false
+        check(todo.isDone)
     }
     
     private func check(_ show: Bool){
-        descriptionLabel.alpha = show ? 0.0 : 0.5
+        descriptionLabel.alpha = show ? 0.2 : 1
     }
     
     private func reset(){
+        descriptionLabel.alpha = 1
+        deleteButton.isHidden = true
+        check(true)
+    }
+    
+    @IBAction func checkButtonTapped(_ sender: Any){
+        checkButton.isSelected = !checkButton.isSelected
+        let isDone = checkButton.isSelected
+        check(isDone)
+        deleteButton.isHidden = !isDone
         
+        doneButtonTapHandler?(isDone)
+    }
+    
+    @IBAction func delteButtonTapped(_ sender: Any){
+        deleteButtonTapHandler?()
     }
 }
 
