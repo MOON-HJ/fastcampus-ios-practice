@@ -10,7 +10,7 @@ import UIKit
 class TodoListViewController: UIViewController {
 
     let viewModel = TodoViewModel()
-//    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var inputViewBottom: NSLayoutConstraint!
     @IBOutlet weak var inputTextField: UITextField!
     
@@ -32,7 +32,13 @@ class TodoListViewController: UIViewController {
     }
     
     @IBAction func addTaskButtonTapped(_ sender: Any){
+        guard let detail = inputTextField.text, !detail.isEmpty else { return }
+        let todo:Todo = TodoManager.shared.createTodo(detail: detail, isToday: isTodayButton.isSelected)
+        viewModel.addTodo(todo)
+        collectionView.reloadData()
         
+        inputTextField.text = ""
+        isTodayButton.isSelected = false
         
     }
 
@@ -88,6 +94,20 @@ extension TodoListViewController: UICollectionViewDataSource{
         }
 
         cell.updateUI(todo: todo)
+        
+        cell.doneButtonTapHandler = { isDone in
+            todo.isDone = isDone
+            self.viewModel.updateTodo(todo)
+            self.collectionView.reloadData()
+        }
+        
+        cell.deleteButtonTapHandler = {
+            self.viewModel.deleteTodo(todo)
+            self.collectionView.reloadData()
+            
+        }
+        
+        
         return cell
     }
     
@@ -97,6 +117,9 @@ extension TodoListViewController: UICollectionViewDataSource{
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "todoHeader", for: indexPath) as? TodoListHeader
             else { return UICollectionReusableView() }
             
+            guard let section = TodoViewModel.Section(rawValue: indexPath.section) else {
+                return UICollectionReusableView()  }
+            header.subTitle.text = section.title
             return header
         default:
             return UICollectionReusableView()
@@ -108,7 +131,7 @@ extension TodoListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // TODO: 사이즈 계산하기
         let width = collectionView.bounds.width
-        let height:CGFloat = 60
+        let height:CGFloat = 30
         return CGSize(width: width, height: height)
     }
 }

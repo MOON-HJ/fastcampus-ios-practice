@@ -59,11 +59,14 @@ class TodoManager {
     }
     
     func retrieveTodo(){
+        todos = Storage.retrive("todos.json", from: .documents, as: [Todo].self) ?? []
         
+        let lastId = todos.last?.id ?? 0
+        TodoManager.lastId = lastId
     }
     
     func saveTodo(){
-//        Storage.store(todos, to: .documents, as: "todos.json")
+        Storage.store(todos, to: .documents, as: "todos.json")
         
     }
  }

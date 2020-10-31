@@ -21,7 +21,7 @@ class TodoViewModel {
             }
         }
     }
-    var numOfSection:Int = Section.allCases.count
+    var numOfSection:Int { return Section.allCases.count }
     
     var todos:[Todo] { return manager.todos }
     var todayTodos:[Todo] {

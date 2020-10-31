@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zv0-pV-aXo">
-                                    <size key="itemSize" width="376" height="128"/>
+                                    <size key="itemSize" width="414" height="60"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -76,7 +76,6 @@
                                                 <constraint firstItem="tNz-kg-av8" firstAttribute="centerY" secondItem="JmW-GF-8v7" secondAttribute="centerY" id="vdM-i5-Igf"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="414" height="60"/>
                                         <connections>
                                             <outlet property="checkButton" destination="tNz-kg-av8" id="B96-Lt-6rG"/>
                                             <outlet property="deleteButton" destination="kIg-Rm-7Ly" id="SMo-ar-E1g"/>
@@ -111,15 +110,15 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUG-z2-rX0">
-                                <rect key="frame" x="0.0" y="753" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="763" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="I want to..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q0k-7t-7Y8">
-                                        <rect key="frame" x="8" y="13" width="290" height="34"/>
+                                        <rect key="frame" x="8" y="8" width="290" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu1-FT-Rjx">
-                                        <rect key="frame" x="363" y="12.5" width="35" height="35"/>
+                                        <rect key="frame" x="363" y="7.5" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="JNw-6B-ooV"/>
                                             <constraint firstAttribute="height" constant="35" id="JYL-u7-XUc"/>
@@ -133,7 +132,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atu-hG-ShE">
-                                        <rect key="frame" x="308" y="12.5" width="45" height="35"/>
+                                        <rect key="frame" x="308" y="7.5" width="45" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="T9l-xY-TF6"/>
                                             <constraint firstAttribute="width" constant="45" id="Yqt-AE-C9l"/>
@@ -150,12 +149,12 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Eu1-FT-Rjx" secondAttribute="trailing" constant="16" id="1VY-bY-qPi"/>
                                     <constraint firstItem="Eu1-FT-Rjx" firstAttribute="centerY" secondItem="SUG-z2-rX0" secondAttribute="centerY" id="H8V-CP-1AE"/>
                                     <constraint firstItem="Q0k-7t-7Y8" firstAttribute="leading" secondItem="SUG-z2-rX0" secondAttribute="leading" constant="8" id="IQR-1K-nvp"/>
-                                    <constraint firstAttribute="height" constant="60" id="OLf-wi-Nb7"/>
+                                    <constraint firstAttribute="height" constant="50" id="OLf-wi-Nb7"/>
                                     <constraint firstItem="Atu-hG-ShE" firstAttribute="centerY" secondItem="Eu1-FT-Rjx" secondAttribute="centerY" id="TLg-2Q-rK0"/>
                                     <constraint firstItem="Atu-hG-ShE" firstAttribute="leading" secondItem="Q0k-7t-7Y8" secondAttribute="trailing" constant="10" id="lFI-jD-cFf"/>
                                     <constraint firstItem="Q0k-7t-7Y8" firstAttribute="centerY" secondItem="SUG-z2-rX0" secondAttribute="centerY" id="lV7-fT-7QB"/>
@@ -182,6 +181,7 @@
                     <tabBarItem key="tabBarItem" title="Todo" image="checkmark.seal.fill" catalog="system" id="5c3-6S-Giu"/>
                     <connections>
                         <outlet property="addButton" destination="Eu1-FT-Rjx" id="JXg-xH-bt5"/>
+                        <outlet property="collectionView" destination="i3Y-XR-1Nn" id="zS2-op-Yzq"/>
                         <outlet property="inputTextField" destination="Q0k-7t-7Y8" id="go3-mU-1b7"/>
                         <outlet property="inputViewBottom" destination="yOn-tH-sSh" id="SCA-d3-0ix"/>
                         <outlet property="isTodayButton" destination="Atu-hG-ShE" id="lbg-s7-yvv"/>
@@ -300,11 +300,11 @@
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
-        <systemColor name="secondarySystemFillColor">
-            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
