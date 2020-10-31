@@ -20,25 +20,41 @@ class TodoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
         viewModel.loadTasks()
         // Do any additional setup after loading the view.
     }
     
     
     @IBAction func isTodayButtonTapped(_ sender: Any){
-        
+        isTodayButton.isSelected = !isTodayButton.isSelected
     }
     
-    @IBAction func isTaskButtonTapped(_ sender: Any){
+    @IBAction func addTaskButtonTapped(_ sender: Any){
         
         
     }
 
+    @IBAction func backgroundTapped(_ sender: Any) {
+        inputTextField.resignFirstResponder()
+        
+    }
 }
 
 extension TodoListViewController {
     @objc private func adjustInputView(noti: Notification){
         guard let userInfo = noti.userInfo else { return  }
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            let adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
+            inputViewBottom.constant = adjustmentHeight
+            
+        } else {
+            inputViewBottom.constant = 0
+            
+        }
     }
 }
 

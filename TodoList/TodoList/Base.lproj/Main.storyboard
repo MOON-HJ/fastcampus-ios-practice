@@ -28,14 +28,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="todoCell" id="QXi-mf-rbe" customClass="TodoListCell" customModule="TodoList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="90"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JmW-GF-8v7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNz-kg-av8">
-                                                    <rect key="frame" x="20" y="32.5" width="25" height="25"/>
+                                                    <rect key="frame" x="20" y="17.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tNz-kg-av8" secondAttribute="height" multiplier="1:1" id="4UM-YF-4Jv"/>
                                                         <constraint firstAttribute="width" constant="25" id="VAw-UC-eVb"/>
@@ -48,13 +48,13 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLt-YT-vMx">
-                                                    <rect key="frame" x="55" y="34.5" width="302" height="21"/>
+                                                    <rect key="frame" x="55" y="19.5" width="302" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIg-Rm-7Ly">
-                                                    <rect key="frame" x="374" y="34" width="20" height="22"/>
+                                                    <rect key="frame" x="374" y="19" width="20" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="0hy-dH-MA3"/>
                                                         <constraint firstAttribute="width" secondItem="kIg-Rm-7Ly" secondAttribute="height" multiplier="10:11" id="yh2-Fy-eX4"/>
@@ -76,7 +76,7 @@
                                                 <constraint firstItem="tNz-kg-av8" firstAttribute="centerY" secondItem="JmW-GF-8v7" secondAttribute="centerY" id="vdM-i5-Igf"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="414" height="90"/>
+                                        <size key="customSize" width="414" height="60"/>
                                         <connections>
                                             <outlet property="checkButton" destination="tNz-kg-av8" id="B96-Lt-6rG"/>
                                             <outlet property="deleteButton" destination="kIg-Rm-7Ly" id="SMo-ar-E1g"/>
@@ -110,19 +110,89 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Vet-X2-4rY"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUG-z2-rX0">
+                                <rect key="frame" x="0.0" y="753" width="414" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="I want to..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q0k-7t-7Y8">
+                                        <rect key="frame" x="8" y="13" width="290" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu1-FT-Rjx">
+                                        <rect key="frame" x="363" y="12.5" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="JNw-6B-ooV"/>
+                                            <constraint firstAttribute="height" constant="35" id="JYL-u7-XUc"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemPinkColor"/>
+                                        <state key="normal" image="plus" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" weight="heavy"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addTaskButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XVv-rm-jdf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atu-hG-ShE">
+                                        <rect key="frame" x="308" y="12.5" width="45" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="T9l-xY-TF6"/>
+                                            <constraint firstAttribute="width" constant="45" id="Yqt-AE-C9l"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemPinkColor"/>
+                                        <state key="normal" title="Today">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="selected">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="isTodayButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="94s-JN-AjM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Eu1-FT-Rjx" secondAttribute="trailing" constant="16" id="1VY-bY-qPi"/>
+                                    <constraint firstItem="Eu1-FT-Rjx" firstAttribute="centerY" secondItem="SUG-z2-rX0" secondAttribute="centerY" id="H8V-CP-1AE"/>
+                                    <constraint firstItem="Q0k-7t-7Y8" firstAttribute="leading" secondItem="SUG-z2-rX0" secondAttribute="leading" constant="8" id="IQR-1K-nvp"/>
+                                    <constraint firstAttribute="height" constant="60" id="OLf-wi-Nb7"/>
+                                    <constraint firstItem="Atu-hG-ShE" firstAttribute="centerY" secondItem="Eu1-FT-Rjx" secondAttribute="centerY" id="TLg-2Q-rK0"/>
+                                    <constraint firstItem="Atu-hG-ShE" firstAttribute="leading" secondItem="Q0k-7t-7Y8" secondAttribute="trailing" constant="10" id="lFI-jD-cFf"/>
+                                    <constraint firstItem="Q0k-7t-7Y8" firstAttribute="centerY" secondItem="SUG-z2-rX0" secondAttribute="centerY" id="lV7-fT-7QB"/>
+                                    <constraint firstItem="Eu1-FT-Rjx" firstAttribute="leading" secondItem="Atu-hG-ShE" secondAttribute="trailing" constant="10" id="mxT-0G-39b"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i3Y-XR-1Nn" secondAttribute="trailing" id="76l-yz-7nx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SUG-z2-rX0" secondAttribute="trailing" id="Cfj-iA-T2L"/>
+                            <constraint firstItem="SUG-z2-rX0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LM2-Mh-MiY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="i3Y-XR-1Nn" secondAttribute="bottom" id="V5b-5Y-njn"/>
                             <constraint firstItem="i3Y-XR-1Nn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dkC-GG-dvR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="i3Y-XR-1Nn" secondAttribute="leading" id="foX-7O-cQG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SUG-z2-rX0" secondAttribute="bottom" id="yOn-tH-sSh"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="AuY-Hb-Oab" appends="YES" id="uOA-W9-Jy3"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Todo" image="checkmark.seal.fill" catalog="system" id="5c3-6S-Giu"/>
+                    <connections>
+                        <outlet property="addButton" destination="Eu1-FT-Rjx" id="JXg-xH-bt5"/>
+                        <outlet property="inputTextField" destination="Q0k-7t-7Y8" id="go3-mU-1b7"/>
+                        <outlet property="inputViewBottom" destination="yOn-tH-sSh" id="SCA-d3-0ix"/>
+                        <outlet property="isTodayButton" destination="Atu-hG-ShE" id="lbg-s7-yvv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="AuY-Hb-Oab">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="BYZ-38-t0r" id="BNT-eO-oxl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1124.6376811594205" y="-254.46428571428569"/>
         </scene>
@@ -228,7 +298,11 @@
         <image name="checkmark.seal.fill" catalog="system" width="128" height="128"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
