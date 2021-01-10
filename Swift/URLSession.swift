@@ -22,6 +22,28 @@ urlComponents.queryItems?.append(entityQuery)
 urlComponents.queryItems?.append(termQuery)
 let requestURL = urlComponents.url!
 
+struct Response:Codable {
+    let resultCount: Int
+    let tracks: [Track]
+    
+    enum CodingKeys: String, CodingKey {
+        case resultCount
+        case tracks = "results"
+    }
+}
+
+struct Track:Codable {
+    let title: String
+    let artistName: String
+    let thumbnailPath: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "trackName"
+        case artistName
+        case thumbnailPath = "artworkUrl30"
+    }
+}
+
 let dataTask = session.dataTask(with: requestURL) {(data, response, error) in
     guard error == nil else {return }
     guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return }
@@ -33,7 +55,38 @@ let dataTask = session.dataTask(with: requestURL) {(data, response, error) in
     
     guard let resultData = data  else {return }
     let resultString = String(data:resultData, encoding: .utf8)
-    print("--> result : \(resultString)")
+    
+    // 파싱 및 트랙 가져오기
+    do {
+        let decorder = JSONDecoder()
+        let response = try decorder.decode(Response.self, from: resultData)
+        let tracks = response.tracks
+        
+        print(tracks.count)
+        print("\(tracks.first?.artistName) - \(tracks.first?.title)")
+        print("\(tracks.last?.artistName) - \(tracks.last?.title)")
+
+    } catch let error {
+        print("---> error \(error.localizedDescription)")
+    }
+    
+//    print("--> result : \(resultString)")
+
+
 }
+// 목표 : 트랙리스트 오브젝트로 가져오기
+
+// 하고 싶은 욕구 목록
+// - Data -> Track 목록으로 가져오고 싶다
+// - Track 오브젝트를 만들어야겠다
+// - Data에서 struct로 파싱하고 싶다 > Codable 이용해서 만들자
+//      - Json 파일, 데이터 > 오브젝트 (Codable 이용하겠다)
+//
+// 해야할 일
+// - Response, Track strcut
+// - struct와 프로퍼티 이름과 실제 데이터와 키와 맞추기 (Codable 디코딩하게 하기 위해서)
+// - 파싱하기 (Decoding)
+// - 트랙리스트 가져오기
+
 
 dataTask.resume()
