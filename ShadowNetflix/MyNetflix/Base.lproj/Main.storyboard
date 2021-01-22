@@ -151,10 +151,52 @@
                     <view key="view" contentMode="scaleToFill" id="5dE-BT-Tyt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="iGo-BE-LSY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Lf4-yK-Bdw" id="hSL-ek-1Vn"/>
+                                </connections>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="s48-nF-buy">
+                                <rect key="frame" x="0.0" y="100" width="414" height="713"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MGy-SI-Yba">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uXQ-Pp-LTo">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eK0-fI-4Ci">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="n9k-jk-E7Q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="s48-nF-buy" firstAttribute="leading" secondItem="n9k-jk-E7Q" secondAttribute="leading" id="1Ez-MO-ogT"/>
+                            <constraint firstItem="n9k-jk-E7Q" firstAttribute="bottom" secondItem="s48-nF-buy" secondAttribute="bottom" id="AMS-xK-rQk"/>
+                            <constraint firstItem="s48-nF-buy" firstAttribute="top" secondItem="iGo-BE-LSY" secondAttribute="bottom" id="DRO-fu-uXc"/>
+                            <constraint firstItem="iGo-BE-LSY" firstAttribute="top" secondItem="n9k-jk-E7Q" secondAttribute="top" id="DbY-Hb-JWH"/>
+                            <constraint firstItem="iGo-BE-LSY" firstAttribute="leading" secondItem="n9k-jk-E7Q" secondAttribute="leading" id="G0o-H6-fOc"/>
+                            <constraint firstItem="n9k-jk-E7Q" firstAttribute="trailing" secondItem="s48-nF-buy" secondAttribute="trailing" id="u6f-I1-83v"/>
+                            <constraint firstItem="n9k-jk-E7Q" firstAttribute="trailing" secondItem="iGo-BE-LSY" secondAttribute="trailing" id="ynO-kV-kz6"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="UWE-ky-SQF"/>
+                    <connections>
+                        <outlet property="resultCollectionView" destination="s48-nF-buy" id="VTW-UR-a5H"/>
+                        <outlet property="searchBar" destination="iGo-BE-LSY" id="27D-Av-f9P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9vi-cu-R4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
