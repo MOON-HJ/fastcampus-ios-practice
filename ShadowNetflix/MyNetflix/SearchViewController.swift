@@ -39,6 +39,8 @@ extension SearchViewController: UISearchBarDelegate {
 //        - 결과를 받아와서, CollectionView로 표현해주자
         SearchAPI.search(searchTerm) { (movies) in
             // collectionView로 표현하기
+            print("--> result:\(movies.count), 첫번째 제목 : \(movies.first?.title)")
+
         }
         print("--> 검색어: \(searchTerm)")
     }
@@ -72,22 +74,48 @@ class SearchAPI{
                 return
             }
             
-//            data -> [Movie]
-            let string = String(data:resultData, encoding: .utf8)
-            print("result -> \(string)")
-//            completion([Movie])
-            
+            let movies = SearchAPI.parseMovies(resultData)
+            completion(movies)
             
         }
         
         dataTask.resume()
     }
-}
-
-struct Response {
     
+    static func parseMovies(_ data: Data) -> [Movie]{
+        let decoder = JSONDecoder()
+        do{
+            let response = try decoder.decode(Response.self, from: data)
+            let movies = response.movies
+            return movies
+        } catch let error {
+            print("--> parsing error \(error.localizedDescription)")
+            return []
+        }
+    }
 }
-struct Movie {
 
+struct Response:Codable {
+    let resultCount : Int
+    let movies:[Movie]
+    
+    enum CodingKeys: String, CodingKey {
+        case resultCount
+        case movies = "results"
+    }
+}
+
+struct Movie:Codable {
+    let title: String
+    let director: String
+    let thumbnailPath: String
+    let previewURL: String
+
+    enum CodingKeys: String, CodingKey {
+        case title = "trackName"
+        case director = "artistName"
+        case thumbnailPath = "artworkUrl100"
+        case previewURL = "previewUrl"
+    }
      
 }
