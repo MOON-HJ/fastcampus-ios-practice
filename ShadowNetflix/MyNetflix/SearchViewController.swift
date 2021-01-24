@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchViewController: UIViewController {
 
@@ -30,7 +31,14 @@ extension SearchViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell else { return UICollectionViewCell()}
         
-        cell.backgroundColor = .red
+        let movie = movies[indexPath.item]
+        let url = URL(string: movie.thumbnailPath)!
+    
+        // imagepath(string) -> image
+        // 3rd party 가져다쓰기, SPM, Cocoa Poad, Carthage
+        
+        cell.movieThumbnail.kf.setImage(with: url)
+
         return cell
     }
     
@@ -118,6 +126,7 @@ class SearchAPI{
                 return
             }
             
+            let string = String(data:resultData, encoding: .utf8)
             let movies = SearchAPI.parseMovies(resultData)
             completion(movies)
             
