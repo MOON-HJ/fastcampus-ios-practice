@@ -50,6 +50,14 @@ class ResultCell:UICollectionViewCell {
 }
 
 extension SearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let movie = movies[indexPath.item]
+        let sb = UIStoryboard(name: "Player", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
+        vc.modalPresentationStyle = .fullScreen 
+        present(vc, animated: false, completion: nil)
+    }
     
 }
 
@@ -87,7 +95,6 @@ extension SearchViewController: UISearchBarDelegate {
 //        - []결과를 받아와서, CollectionView로 표현해주자
         SearchAPI.search(searchTerm) { (movies) in
             // collectionView로 표현하기
-            print("--> result:\(movies.count), 첫번째 제목 : \(movies.first?.title)")
             DispatchQueue.main.async {
                 self.movies = movies
                 self.resultCollectionView.reloadData()
@@ -126,7 +133,6 @@ class SearchAPI{
                 return
             }
             
-            let string = String(data:resultData, encoding: .utf8)
             let movies = SearchAPI.parseMovies(resultData)
             completion(movies)
             
