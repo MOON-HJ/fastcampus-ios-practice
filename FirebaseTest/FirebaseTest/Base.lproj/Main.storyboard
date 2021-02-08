@@ -17,7 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FirstData" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Okq-Le-6FM">
-                                <rect key="frame" x="172.5" y="74" width="69" height="21"/>
+                                <rect key="frame" x="152.5" y="74" width="109.5" height="33.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Customers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hh-vV-XBW">
+                                <rect key="frame" x="148" y="159" width="118" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -26,11 +32,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="1Hh-vV-XBW" firstAttribute="top" secondItem="Okq-Le-6FM" secondAttribute="bottom" constant="51.5" id="60S-UB-Sgm"/>
                             <constraint firstItem="Okq-Le-6FM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="GSO-d5-0g8"/>
                             <constraint firstItem="Okq-Le-6FM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="r1w-hV-C8A"/>
+                            <constraint firstItem="1Hh-vV-XBW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wNY-ag-641"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="countCustomersLabel" destination="1Hh-vV-XBW" id="r7n-k6-6v2"/>
                         <outlet property="dataLabel" destination="Okq-Le-6FM" id="3Z1-5A-D7K"/>
                     </connections>
                 </viewController>
