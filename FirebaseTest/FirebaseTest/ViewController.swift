@@ -13,16 +13,34 @@ class ViewController: UIViewController {
     @IBOutlet weak var countCustomersLabel: UILabel!
     
     let db  = Database.database().reference()
-
+    var customers: [Customer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         updateLabel()
         saveBasicTypes()
+//        saveCustomers()
+        fetchCustomers()
+        updateBasicTypes()
+//        deleteBasicTypes()
+    }
+    @IBAction func createCustomer(_ sender: Any) {
         saveCustomers()
+    }
+    
+    @IBAction func readCustomer(_ sender: Any) {
         fetchCustomers()
     }
+    
+    @IBAction func updateCustomer(_ sender: Any) {
+        updateCustomers()
+    }
+    
+    @IBAction func deleteCustomer(_ sender: Any) {
+        deleteCustomers()
+    }
+    
     
     func updateLabel() {
         db.child("firstData").observeSingleEvent(of: .value, with: { snapshot in
@@ -36,8 +54,25 @@ class ViewController: UIViewController {
 }
 
 extension ViewController {
+    func updateBasicTypes(){
+        db.updateChildValues(["int" : 23])
+        db.updateChildValues(["double" : 14.5])
+        db.updateChildValues(["str" : "hello world !!!!!"])
+
+    }
+    
+    func deleteBasicTypes(){
+        db.child("int").removeValue()
+        db.child("double").removeValue()
+        db.child("str").removeValue()
+    }
+}
+
+
+extension ViewController {
     func saveBasicTypes(){
         // - string, number, dict, array
+        
         db.child("int").setValue(3)
         db.child("double").setValue(4.5)
         db.child("str").setValue("hello world")
@@ -71,7 +106,7 @@ extension ViewController {
                 let data = try JSONSerialization.data(withJSONObject: snapshot.value, options: [])
                 let decoder = JSONDecoder()
                 let customers:[Customer] = try decoder.decode([Customer].self, from: data)
-                
+                self.customers = customers
                 DispatchQueue.main.async {
                     self.countCustomersLabel.text = "# of Customers: \(customers.count)"
                 }
@@ -83,12 +118,31 @@ extension ViewController {
             
         }
     }
+    
+    
+    func updateCustomers(){
+        guard !customers.isEmpty else {
+            return
+        }
+        
+        customers[0].name = "Moon"
+        
+        let dictionary = customers.map{ $0.toDicionary }
+        db.updateChildValues(["customers" : dictionary])
+    
+        
+    }
+    
+    func deleteCustomers(){
+        db.child("customers").removeValue()
+        
+    }
 }
 
 struct Customer: Codable{
-    let id: String
-    let name:String
-    let books: [Book]
+    var id: String
+    var name:String
+    var books: [Book]
     
     var toDicionary:[String:Any] {
         let booksArray = books.map{$0.toDicionary}
