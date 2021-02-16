@@ -502,14 +502,56 @@
         <!--저장한 콘텐츠 목록-->
         <scene sceneID="G3y-va-xMY">
             <objects>
-                <viewController id="0DL-kq-S35" sceneMemberID="viewController">
+                <viewController id="0DL-kq-S35" customClass="HistoryViewController" customModule="MyNetflix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P9C-bK-D6z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qey-DH-3GU">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="86" id="ty6-Wa-89T" customClass="HistoryCell" customModule="MyNetflix" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ty6-Wa-89T" id="Yil-4p-WpE">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJb-es-z7n">
+                                                    <rect key="frame" x="16" y="4" width="382" height="78"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fJb-es-z7n" firstAttribute="top" secondItem="Yil-4p-WpE" secondAttribute="top" constant="4" id="8ru-M2-co6"/>
+                                                <constraint firstItem="fJb-es-z7n" firstAttribute="leading" secondItem="Yil-4p-WpE" secondAttribute="leading" constant="16" id="9fO-Cx-IeU"/>
+                                                <constraint firstAttribute="trailing" secondItem="fJb-es-z7n" secondAttribute="trailing" constant="16" id="BwP-mJ-pAI"/>
+                                                <constraint firstAttribute="bottom" secondItem="fJb-es-z7n" secondAttribute="bottom" constant="4" id="MJC-O4-CQ3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="searchTerm" destination="fJb-es-z7n" id="USm-JZ-q9T"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="OYX-Ro-fRu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Qey-DH-3GU" firstAttribute="leading" secondItem="OYX-Ro-fRu" secondAttribute="leading" id="6cN-5T-QGa"/>
+                            <constraint firstItem="Qey-DH-3GU" firstAttribute="top" secondItem="OYX-Ro-fRu" secondAttribute="top" id="k0J-Pr-VM5"/>
+                            <constraint firstItem="OYX-Ro-fRu" firstAttribute="trailing" secondItem="Qey-DH-3GU" secondAttribute="trailing" id="up2-PQ-kMn"/>
+                            <constraint firstItem="OYX-Ro-fRu" firstAttribute="bottom" secondItem="Qey-DH-3GU" secondAttribute="bottom" id="wMc-hq-Cwm"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="저장한 콘텐츠 목록" image="square.and.arrow.down.fill" catalog="system" id="o4B-qf-7ZJ"/>
+                    <connections>
+                        <outlet property="tableView" destination="Qey-DH-3GU" id="zPD-Kw-3d8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igm-fa-Xmf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
