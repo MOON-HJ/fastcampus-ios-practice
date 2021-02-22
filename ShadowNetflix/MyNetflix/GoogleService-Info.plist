@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>311884060004-3h1tii5caflkqpbim8sv0ltgl6h6h1ee.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.311884060004-3h1tii5caflkqpbim8sv0ltgl6h6h1ee</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAI_0MryiDV68KgbkWxkA1vMs1stlT_4uw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>311884060004</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.moon.MyNetflix</string>
+	<key>PROJECT_ID</key>
+	<string>shadownetflix-8cee0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>shadownetflix-8cee0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:311884060004:ios:5ffe06965c6664ecf8d671</string>
+</dict>
+</plist>
