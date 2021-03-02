@@ -23,7 +23,7 @@ class CameraViewController: UIViewController {
     let photoOutput = AVCapturePhotoOutput()
     
     let sessionQueue = DispatchQueue(label: "session Queue")
-    let videoDeviceDiscorverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera, .builtInTrueDepthCamera], mediaType: .video, position: .back
+    let videoDeviceDiscorverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera, .builtInTrueDepthCamera], mediaType: .video, position: .unspecified
     )
     
     
@@ -99,12 +99,19 @@ class CameraViewController: UIViewController {
                     if self.captureSession.canAddInput(videoDeviceInput){
                         self.captureSession.addInput(videoDeviceInput)
                         self.videoDeviceInput = videoDeviceInput
+                        
                     } else {
                         self.captureSession.addInput(self.videoDeviceInput)
                     }
+                    
                     self.captureSession.commitConfiguration()
                     
-                }catch {
+                    DispatchQueue.main.async {
+                        self.updateSwitchCameraIcon(position: preferredPosition)
+                    }
+                    
+                } catch let error {
+                    print(" error occured while creating device input : \(error.localizedDescription)")
                     
                 }
             }
@@ -115,7 +122,16 @@ class CameraViewController: UIViewController {
     
     func updateSwitchCameraIcon(position: AVCaptureDevice.Position) {
         // TODO: Update ICON
-        
+        switch position {
+        case .front:
+            let image = #imageLiteral(resourceName: "ic_camera_front")
+            switchButton.setImage(image, for: .normal)
+        case .back:
+            let image = #imageLiteral(resourceName: "ic_camera_rear")
+            switchButton.setImage(image, for: .normal)
+        default:
+            break
+        }
         
     }
     
@@ -156,6 +172,7 @@ extension CameraViewController {
         let videoDeviceInput = try AVCaptureDeviceInput(device: camera)
             if captureSession.canAddInput(videoDeviceInput){
                 captureSession.addInput(videoDeviceInput)
+                self.videoDeviceInput = videoDeviceInput
             } else {
                 captureSession.commitConfiguration()
                 return
